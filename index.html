@@ -175,6 +175,30 @@ canvas{display:block;image-rendering:pixelated;}
     </div>
   </div>
 
+  <!-- HOW TO PLAY MODAL -->
+  <div id="howto-modal" class="screen hidden" style="background:rgba(0,0,0,0.92);z-index:50;padding:20px;">
+    <div style="max-width:500px;width:92vw;background:#111;border:4px solid #ffe600;padding:20px 18px;font-family:'Courier New',monospace;">
+      <div style="font-size:clamp(18px,4vw,28px);color:#ffe600;font-weight:900;text-align:center;margin-bottom:12px;text-shadow:3px 3px 0 #000;">HOW TO PLAY</div>
+      <div style="font-size:clamp(11px,2vw,15px);color:#fff;line-height:2;font-weight:700;">
+        <div style="color:#7dff6b;">HOLD the FART button</div>
+        <div style="margin-left:12px;color:#ccc;">Bottom-right corner — fly up!</div>
+        <div style="color:#7dff6b;margin-top:8px;">COLLECT BURRITOS</div>
+        <div style="margin-left:12px;color:#ccc;">Each one = 1 point</div>
+        <div style="color:#c44dff;margin-top:8px;">RAINBOW FART power-up</div>
+        <div style="margin-left:12px;color:#ccc;">6 seconds of invincibility!</div>
+        <div style="color:#ff4444;margin-top:8px;">AVOID THESE — costs a life:</div>
+        <div style="margin-left:12px;color:#ccc;">Laser beams | Angry Toilet</div>
+        <div style="margin-left:12px;color:#ccc;">Spinning Plunger | Toxic Gas Cloud</div>
+        <div style="color:#ffe600;margin-top:8px;">WALLS — fly over the top!</div>
+        <div style="margin-left:12px;color:#ccc;">You can land and stand on them too</div>
+        <div style="color:#ff8844;margin-top:10px;">You have 3 lives ❤ ❤ ❤</div>
+      </div>
+      <div style="text-align:center;margin-top:16px;">
+        <button class="btn btn-p" onclick="closeHowTo();playUIFart()">GOT IT!</button>
+      </div>
+    </div>
+  </div>
+
 </div>
 <script>
 // ═══════════════════════════════════════════
@@ -207,6 +231,7 @@ function loadFartAudio(){
 }
 
 function playUIFart(){
+  if(SD.muted) return;
   try{
     var ac = getAC(); if(!ac) return;
     if(ac.state==='suspended'){ ac.resume(); }
@@ -226,7 +251,7 @@ function playUIFart(){
   }catch(e){ playUIFartSynth(); }
 }
 
-function playUIFartSynth(){
+function playUIFartSynth(){ if(SD.muted)return;
   // Fallback synthetic wet fart if audio not loaded yet
   try{
     var ac=getAC();if(!ac)return;
@@ -667,8 +692,19 @@ function toggleMute(){
   SD.muted = !SD.muted;
   saveSave();
   updateMuteBtns();
-  if(SD.muted){stopMusic();}
-  else{if(GS==='playing'||GS==='paused')startMusic(SD.selLoc);}
+  if(SD.muted){
+    stopMusic();
+  } else {
+    // Restart appropriate music for current screen
+    if(GS==='playing'||GS==='paused'){
+      startMusic(SD.selLoc);
+    } else {
+      // Menu / char select / loc select / game over
+      stopMusic();
+      currentLocMusic = 0;
+      startMusic(0);
+    }
+  }
 }
 
 function updateMuteBtns(){
@@ -874,6 +910,7 @@ function playNoise(ac, dest, t, dur, vol, filtType, filtFreq){
 
 function stopMusic(){
   musicPlaying = false;
+  currentLocMusic = -1; // reset so next startMusic call always fires
   if(musicTimer){ clearInterval(musicTimer); musicTimer=null; }
   scheduledChunks = {};
   musicNodes.forEach(function(n){ try{ n.stop(); }catch(e){} });
@@ -885,7 +922,7 @@ function stopMusic(){
 // SFX
 // (duplicate playUIFart removed)
 
-function playFartSFX(){
+function playFartSFX(){ if(SD.muted)return;
   try{
     var ac=getAC();if(!ac)return;
     var buf=ac.createBuffer(1,ac.sampleRate*0.22,ac.sampleRate);
@@ -904,7 +941,7 @@ function playFartSFX(){
   }catch(e){}
 }
 
-function playDingSFX(){
+function playDingSFX(){ if(SD.muted)return;
   try{
     var ac=getAC();if(!ac)return;
     var o=ac.createOscillator();var g=ac.createGain();
@@ -917,7 +954,7 @@ function playDingSFX(){
   }catch(e){}
 }
 
-function playSplatSFX(){
+function playSplatSFX(){ if(SD.muted)return;
   try{
     var ac=getAC();if(!ac)return;
     var buf=ac.createBuffer(1,ac.sampleRate*0.15,ac.sampleRate);
@@ -1007,10 +1044,9 @@ function goMenu(){
 }
 
 function ensureMenuMusic(){
-  // If already playing loc 0 (menu track) — never interrupt it
-  if(currentLocMusic===0 || currentLocMusic==='menu') return;
+  // currentLocMusic resets to -1 on stopMusic, so this is safe
+  if(currentLocMusic===0) return; // already playing menu track
   stopMusic();
-  currentLocMusic=0;
   startMusic(0);
 }
 
@@ -1029,7 +1065,14 @@ function goLoc(){
 }
 
 function howTo(){
-  alert('HOW TO PLAY\n\nHOLD the FART button (bottom-right) to fly up!\nRelease to fall back down.\n\n>> Collect BURRITOS for points!\n>> RAINBOW FART = INVINCIBLE for 6 seconds!\n\nWALLS: block your path -- fly up through the gap!\nHitting a wall stops you. Gravity drops you. Fart up!\n\n[X] LASERS + ENEMIES take a life!\nAngry Toilet | Spinning Plunger | Toxic Gas Cloud\n\nYou have 3 lives. Good luck!');
+  var el=document.getElementById('howto-modal');
+  el.classList.remove('hidden');
+  setTimeout(function(){el.classList.add('active');},10);
+}
+function closeHowTo(){
+  var el=document.getElementById('howto-modal');
+  el.classList.remove('active');
+  setTimeout(function(){el.classList.add('hidden');},260);
 }
 
 function buildChars(){
@@ -1691,12 +1734,9 @@ function startGame(){
   PL.x=Math.floor(canvas.width*0.22);PL.y=FLOOR-PL.h;PL.vy=0;
   updateHUD();
   if(loopId)cancelAnimationFrame(loopId);
-  // Only restart music if switching to a different track
-  if(currentLocMusic !== SD.selLoc){
-    stopMusic();
-    currentLocMusic = SD.selLoc;
-    startMusic(SD.selLoc);
-  }
+  // Always start gameplay music fresh
+  stopMusic();
+  startMusic(SD.selLoc);
   loop();
 }
 
