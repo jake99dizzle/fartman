@@ -4,8 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>FART MAN</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a0a2e">
+<link rel="icon" href="favicon-fartman.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Fart Man">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{background:#111;overflow:hidden;touch-action:none;user-select:none;font-family:'Courier New',monospace;}
@@ -2242,6 +2247,16 @@ drawAllIcons();
 // Try to preload fart audio immediately (works on some browsers)
 // Will definitely load after first interaction via bootMusicOnFirstInteraction
 try{ loadFartAudio(); }catch(e){}
+</script>
+<script>
+(function () {
+  if (!('serviceWorker' in navigator)) return;
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {
+      // Registration failure is not fatal — game still runs online
+    });
+  });
+})();
 </script>
 </body>
 </html>

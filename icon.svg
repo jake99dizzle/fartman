@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#1a0a2e"/>
+
+  <!-- Outer glow ring -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#ff6b00" stroke-width="12" opacity="0.6"/>
+  <circle cx="256" cy="256" r="218" fill="#2d0b5e"/>
+
+  <!-- Body — rounded superhero torso -->
+  <rect x="182" y="230" width="148" height="130" rx="18" fill="#2244cc"/>
+  <!-- Chest highlight -->
+  <rect x="196" y="238" width="120" height="50" rx="10" fill="#3355dd"/>
+  <!-- Belt -->
+  <rect x="182" y="322" width="148" height="20" rx="6" fill="#ffe600"/>
+  <rect x="238" y="316" width="36" height="32" rx="4" fill="#ffe600"/>
+  <rect x="246" y="322" width="20" height="20" rx="3" fill="#ff6b00"/>
+
+  <!-- Cape -->
+  <path d="M182 240 Q140 300 160 380 L182 360 Z" fill="#cc2222"/>
+  <path d="M330 240 Q372 300 352 380 L330 360 Z" fill="#cc2222"/>
+
+  <!-- Head -->
+  <ellipse cx="256" cy="195" rx="58" ry="62" fill="#ffcc88"/>
+  <!-- Mask -->
+  <path d="M198 178 Q210 155 256 155 Q302 155 314 178 L314 195 Q302 188 256 188 Q210 188 198 195 Z" fill="#2244cc"/>
+  <!-- Eyes under mask -->
+  <ellipse cx="232" cy="188" rx="12" ry="10" fill="white"/>
+  <ellipse cx="280" cy="188" rx="12" ry="10" fill="white"/>
+  <ellipse cx="235" cy="189" rx="7" ry="7" fill="#1133aa"/>
+  <ellipse cx="283" cy="189" rx="7" ry="7" fill="#1133aa"/>
+  <!-- Eye shine -->
+  <circle cx="237" cy="186" r="3" fill="white"/>
+  <circle cx="285" cy="186" r="3" fill="white"/>
+  <!-- Mouth — grin -->
+  <path d="M232 212 Q256 228 280 212" stroke="#884422" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Ears -->
+  <ellipse cx="198" cy="200" rx="12" ry="16" fill="#ffcc88"/>
+  <ellipse cx="314" cy="200" rx="12" ry="16" fill="#ffcc88"/>
+  <!-- Hair/mask top -->
+  <path d="M210 168 Q220 148 256 145 Q292 148 302 168 Q280 160 256 160 Q232 160 210 168 Z" fill="#2244cc"/>
+
+  <!-- Arms -->
+  <ellipse cx="170" cy="275" rx="22" ry="50" fill="#2244cc"/>
+  <ellipse cx="342" cy="275" rx="22" ry="50" fill="#2244cc"/>
+  <!-- Hands -->
+  <ellipse cx="170" cy="322" rx="20" ry="22" fill="#ffcc88"/>
+  <ellipse cx="342" cy="322" rx="20" ry="22" fill="#ffcc88"/>
+
+  <!-- Legs -->
+  <rect x="200" y="348" width="46" height="80" rx="12" fill="#1133aa"/>
+  <rect x="266" y="348" width="46" height="80" rx="12" fill="#1133aa"/>
+  <!-- Boots -->
+  <rect x="196" y="410" width="54" height="30" rx="10" fill="#cc2222"/>
+  <rect x="262" y="410" width="54" height="30" rx="10" fill="#cc2222"/>
+
+  <!-- FART CLOUD from behind (right side) -->
+  <ellipse cx="365" cy="330" rx="42" ry="32" fill="#88dd44" opacity="0.9"/>
+  <ellipse cx="395" cy="318" rx="28" ry="22" fill="#88dd44" opacity="0.85"/>
+  <ellipse cx="418" cy="330" rx="22" ry="18" fill="#88dd44" opacity="0.8"/>
+  <ellipse cx="440" cy="325" rx="18" ry="14" fill="#88dd44" opacity="0.7"/>
+  <ellipse cx="378" cy="312" rx="20" ry="16" fill="#ccff88" opacity="0.7"/>
+  <!-- Cloud highlight -->
+  <ellipse cx="372" cy="322" rx="16" ry="11" fill="#ccff88" opacity="0.5"/>
+
+  <!-- Wavy fart lines -->
+  <path d="M458 310 Q470 305 465 315 Q475 310 468 322" stroke="#66cc22" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M462 330 Q476 325 470 338 Q480 333 474 345" stroke="#66cc22" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Title text — drawn as shapes -->
+  <!-- F -->
+  <rect x="68" y="60" width="10" height="52" fill="#ffe600"/>
+  <rect x="68" y="60" width="34" height="10" fill="#ffe600"/>
+  <rect x="68" y="82" width="26" height="9" fill="#ffe600"/>
+  <!-- A -->
+  <polygon points="110,112 126,60 142,112" fill="#ffe600"/>
+  <rect x="114" y="90" width="24" height="9" fill="#1a0a2e"/>
+  <!-- R -->
+  <rect x="150" y="60" width="10" height="52" fill="#ffe600"/>
+  <rect x="150" y="60" width="28" height="10" fill="#ffe600"/>
+  <rect x="150" y="80" width="28" height="9" fill="#ffe600"/>
+  <rect x="168" y="60" width="10" height="22" rx="5" fill="#ffe600"/>
+  <polygon points="168,89 178,112 160,112" fill="#ffe600"/>
+  <!-- T -->
+  <rect x="190" y="60" width="36" height="10" fill="#ffe600"/>
+  <rect x="203" y="60" width="10" height="52" fill="#ffe600"/>
+
+  <!-- MAN below -->
+  <!-- M -->
+  <rect x="148" y="126" width="9" height="44" fill="#7dff6b"/>
+  <rect x="157" y="126" width="9" height="22" fill="#7dff6b"/>
+  <polygon points="148,126 166,148 184,126" fill="#7dff6b"/>
+  <rect x="175" y="126" width="9" height="44" fill="#7dff6b"/>
+  <!-- A -->
+  <polygon points="196,170 210,126 224,170" fill="#7dff6b"/>
+  <rect x="200" y="152" width="20" height="8" fill="#1a0a2e"/>
+  <!-- N -->
+  <rect x="234" y="126" width="9" height="44" fill="#7dff6b"/>
+  <polygon points="234,126 234,135 268,170 268,161" fill="#7dff6b"/>
+  <rect x="259" y="126" width="9" height="44" fill="#7dff6b"/>
+</svg>
