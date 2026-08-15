@@ -1130,73 +1130,85 @@ function spawnBgObj(){
 function drawBgObj(o){
   var c=ctx;
   c.save();
-  c.globalAlpha=0.35;
+  c.globalAlpha=0.22; // lowered from 0.35 — much more subtle
   var x=o.x,y=o.y;
   var loc=o.locId;
 
-  if(loc===0){// Office
+  if(loc===0){// Office — muted greys and browns
     if(o.type==='desk'){
-      c.fillStyle='#8B6914';c.fillRect(x,y,80,8);
-      c.fillStyle='#6B4F10';c.fillRect(x,y+8,8,30);c.fillRect(x+72,y+8,8,30);
+      c.fillStyle='#4a4038';c.fillRect(x,y,80,8);
+      c.fillStyle='#3a322c';c.fillRect(x,y+8,8,30);c.fillRect(x+72,y+8,8,30);
     }else if(o.type==='computer'){
-      c.fillStyle='#333';c.fillRect(x,y,40,30);
-      c.fillStyle='#44aaff';c.fillRect(x+3,y+3,34,22);
-      c.fillStyle='#555';c.fillRect(x+15,y+30,10,8);
+      c.fillStyle='#2a2a2a';c.fillRect(x,y,40,30);
+      c.fillStyle='#3a4450';c.fillRect(x+3,y+3,34,22);
+      c.fillStyle='#333';c.fillRect(x+15,y+30,10,8);
     }else if(o.type==='plant'){
-      c.fillStyle='#553311';c.fillRect(x+8,y+20,14,18);
-      c.fillStyle='#22aa44';c.beginPath();c.arc(x+15,y+15,18,0,Math.PI*2);c.fill();
+      c.fillStyle='#3a3a3a';c.fillRect(x+8,y+20,16,20);
+      c.fillStyle='#2a2a2a';c.fillRect(x+6,y+18,20,4);
+      c.fillStyle='#404040';
+      c.fillRect(x+10,y+4,4,16);
+      c.fillRect(x+18,y+6,4,14);
+      c.fillRect(x+14,y,4,20);
+      c.fillRect(x+4,y+10,6,10);
+      c.fillRect(x+22,y+12,6,8);
     }else{
-      c.fillStyle='#884422';c.fillRect(x,y,30,35);
-      c.fillStyle='#aa5533';c.fillRect(x+4,y+4,22,20);
+      c.fillStyle='#443830';c.fillRect(x,y,30,35);
+      c.fillStyle='#524438';c.fillRect(x+4,y+4,22,20);
     }
-  }else if(loc===1){// Elevator
+  }else if(loc===1){// Elevator — muted greys
     if(o.type==='panel'){
-      c.fillStyle='#888';c.fillRect(x,y,20,60);
-      for(var i=0;i<6;i++){c.fillStyle=i%2===0?'#ff4444':'#ffe600';c.beginPath();c.arc(x+10,y+8+i*9,5,0,Math.PI*2);c.fill();}
+      c.fillStyle='#4a4a4a';c.fillRect(x,y,20,60);
+      for(var i=0;i<6;i++){
+        c.fillStyle=i%2===0?'#5a4444':'#5a5444';
+        c.fillRect(x+6,y+6+i*9,8,6);
+      }
     }else if(o.type==='mirror'){
-      c.fillStyle='#ccddee';c.fillRect(x,y,50,70);c.fillStyle='rgba(255,255,255,0.3)';c.fillRect(x+3,y+3,15,20);
+      c.fillStyle='#4a5058';c.fillRect(x,y,50,70);
+      c.fillStyle='rgba(200,210,220,0.12)';c.fillRect(x+3,y+3,15,20);
     }
-  }else if(loc===2){// Casa De Gas
+  }else if(loc===2){// Casa De Gas — muted earthy browns
     if(o.type==='pot'){
-      c.fillStyle='#884400';c.beginPath();c.ellipse(x+20,y+15,20,15,0,0,Math.PI*2);c.fill();
-      c.fillStyle='#cc6600';c.fillRect(x+5,y-5,30,20);
+      c.fillStyle='#4a3520';c.fillRect(x+2,y+4,36,24);
+      c.fillStyle='#5a4028';c.fillRect(x+5,y-5,30,14);
     }else if(o.type==='pepper'){
-      c.fillStyle='#cc2200';c.beginPath();c.ellipse(x+8,y+15,8,15,0,0,Math.PI*2);c.fill();
-      c.fillStyle='#226600';c.fillRect(x+6,y,4,8);
+      c.fillStyle='#5a3028';c.fillRect(x+2,y+4,12,24);
+      c.fillStyle='#3a4028';c.fillRect(x+6,y,4,8);
     }else{
-      c.fillStyle='#aa6622';c.fillRect(x,y,60,8);c.fillRect(x,y+20,60,8);
-      c.fillStyle='#cc8833';for(var j=0;j<4;j++)c.fillRect(x+j*16,y+8,12,12);
+      c.fillStyle='#4a3c28';c.fillRect(x,y,60,8);c.fillRect(x,y+20,60,8);
+      c.fillStyle='#584838';for(var j=0;j<4;j++)c.fillRect(x+j*16,y+8,12,12);
     }
-  }else if(loc===3){// Clinic
+  }else if(loc===3){// Clinic — muted teals and greys
     if(o.type==='bed'){
-      c.fillStyle='#ffffff';c.fillRect(x,y,70,15);
-      c.fillStyle='#cccccc';c.fillRect(x,y+15,70,5);
-      c.fillStyle='#888';c.fillRect(x+5,y+20,60,20);
+      c.fillStyle='#5a6060';c.fillRect(x,y,70,15);
+      c.fillStyle='#4a5050';c.fillRect(x,y+15,70,5);
+      c.fillStyle='#3a4040';c.fillRect(x+5,y+20,60,20);
     }else if(o.type==='xray'){
-      c.fillStyle='#113366';c.fillRect(x,y,40,55);
-      c.fillStyle='rgba(255,255,255,0.4)';c.beginPath();c.ellipse(x+20,y+25,12,18,0,0,Math.PI*2);c.fill();
+      c.fillStyle='#2a3440';c.fillRect(x,y,40,55);
+      c.fillStyle='rgba(160,180,200,0.15)';c.fillRect(x+10,y+10,20,35);
     }else{
-      c.fillStyle='#ff4444';c.fillRect(x+13,y,4,30);c.fillRect(x,y+13,30,4);
+      c.fillStyle='#5a4040';c.fillRect(x+13,y,4,30);c.fillRect(x,y+13,30,4);
     }
-  }else if(loc===4){// Cinema
+  }else if(loc===4){// Cinema — muted purples and greys
     if(o.type==='seat'){
-      c.fillStyle='#441166';c.fillRect(x,y+10,30,25);c.fillRect(x,y,30,12);c.fillRect(x+2,y+35,8,12);c.fillRect(x+20,y+35,8,12);
+      c.fillStyle='#332840';c.fillRect(x,y+10,30,25);c.fillRect(x,y,30,12);
+      c.fillRect(x+2,y+35,8,12);c.fillRect(x+20,y+35,8,12);
     }else if(o.type==='popcorn'){
-      c.fillStyle='#cc4400';c.fillRect(x+5,y+20,30,25);
-      c.fillStyle='#ffeecc';for(var k=0;k<8;k++)c.fillRect(x+5+k*4,y+5+Math.sin(k)*8,6,16);
+      c.fillStyle='#4a3830';c.fillRect(x+5,y+20,30,25);
+      c.fillStyle='#5a5248';for(var k=0;k<8;k++)c.fillRect(x+5+k*4,y+5+Math.sin(k)*8,6,16);
     }else{
-      c.fillStyle='#eeeeee';c.fillRect(x,y,80,50);
-      c.fillStyle='#3388ff';c.fillRect(x+5,y+5,70,40);
+      c.fillStyle='#454550';c.fillRect(x,y,80,50);
+      c.fillStyle='#3a4050';c.fillRect(x+5,y+5,70,40);
     }
-  }else{// Fart Mart
+  }else{// Fart Mart — muted greens and greys
     if(o.type==='shelf'){
-      c.fillStyle='#8B6914';c.fillRect(x,y,80,6);c.fillRect(x,y+22,80,6);c.fillRect(x,y+44,80,6);
-      c.fillStyle='#ff4444';for(var m=0;m<4;m++)c.fillRect(x+m*20+2,y+8,14,12);
+      c.fillStyle='#3e4438';c.fillRect(x,y,80,6);c.fillRect(x,y+22,80,6);c.fillRect(x,y+44,80,6);
+      c.fillStyle='#4a4438';for(var m=0;m<4;m++)c.fillRect(x+m*20+2,y+8,14,12);
     }else if(o.type==='cart'){
-      c.fillStyle='#888';c.fillRect(x,y,50,35);c.fillRect(x+5,y+35,40,5);
-      c.beginPath();c.arc(x+10,y+44,8,0,Math.PI*2);c.fill();c.beginPath();c.arc(x+40,y+44,8,0,Math.PI*2);c.fill();
+      c.fillStyle='#484848';c.fillRect(x,y,50,35);c.fillRect(x+5,y+35,40,5);
+      c.fillStyle='#3a3a3a';c.fillRect(x+4,y+40,12,8);c.fillRect(x+34,y+40,12,8);
     }else{
-      c.fillStyle='#ffe600';c.fillRect(x,y,60,20);c.fillStyle='#cc0000';c.fillRect(x+5,y+4,50,12);
+      c.fillStyle='#4a4838';c.fillRect(x,y,60,20);
+      c.fillStyle='#443838';c.fillRect(x+5,y+4,50,12);
     }
   }
   c.restore();
@@ -1447,7 +1459,7 @@ function fartCloud(x,y){
       vx:-speed, vy:spread,
       r:Math.random()*5+3, life:1, dec:0.055,
       rb:rb, hue:(fc*14+i*55)%360,
-      jet:true, jcol:rb?null:('rgba('+(100+Math.floor(Math.random()*80))+',220,'+(50+Math.floor(Math.random()*80))+',')
+      jet:true, jcol:rb?null:('rgba('+(80+Math.floor(Math.random()*40))+','+(100+Math.floor(Math.random()*40))+',' +(20+Math.floor(Math.random()*30))+',')
     });
   }
 
@@ -1456,9 +1468,9 @@ function fartCloud(x,y){
     parts.push({
       x:cx - Math.random()*8, y:cy + (Math.random()-0.5)*12,
       vx:-(Math.random()*1.8+0.5), vy:(Math.random()-0.5)*1.2,
-      r:Math.random()*11+7, life:0.85, dec:Math.random()*0.02+0.012,
+      r:Math.random()*11+7, life:0.75, dec:Math.random()*0.02+0.014,
       rb:rb, hue:(fc*10+j*70)%360,
-      g:Math.floor(160+Math.random()*60), b:Math.floor(40+Math.random()*60)
+      g:Math.floor(70+Math.random()*40), b:Math.floor(20+Math.random()*30)
     });
   }
 }
@@ -1732,7 +1744,7 @@ function startGame(){
   document.getElementById('holdbtn').style.display='flex';
   updatePauseBtn(false);
   updateBounds();
-  sprScale=Math.floor(clamp(2,canvas.height/120,4));
+  sprScale=Math.floor(clamp(3,canvas.height/95,5));
   PL.w=16*sprScale;PL.h=15*sprScale;
   score=0;lives=3;farting=false;spd=3;fc=0;
   rainbowT=0;flashT=0;graceT=0;fartPuff=0;stuckTimer=0;boostTimer=0;
@@ -1959,7 +1971,7 @@ function loop(){
     if(p.rb) ctx.fillStyle='hsla('+p.hue+',100%,65%,'+p.life+')';
     else if(p.burst) ctx.fillStyle=p.bcol+p.life+')';
     else if(p.jet) ctx.fillStyle=p.jcol+p.life+')';
-    else ctx.fillStyle='rgba(130,'+(p.g||180)+','+(p.b||80)+','+p.life+')';
+    else ctx.fillStyle='rgba(55,'+(p.g||80)+','+(p.b||25)+','+p.life+')';
     ctx.fill();
   });
 
