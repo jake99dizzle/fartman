@@ -1682,7 +1682,7 @@ function updateHUD(){
     hc.appendChild(h);
   }
   var pt='';
-  if(rainbowT>0)pt='** INVINCIBLE '+Math.ceil(rainbowT/60)+'s **';
+  if(rainbowT>0)pt='** INVINCIBLE + 2x '+Math.ceil(rainbowT/60)+'s **';
   document.getElementById('hpow').textContent=pt;
 }
 
@@ -1934,8 +1934,9 @@ function loop(){
     b.x-=spd;
     b.wb+=0.05;
     if(overlap(PL.x,PL.y,PL.w,PL.h,b.x,b.y,b.w,b.h,3)){
-      score++;playDingSFX();
-      flashMsg('+1 BURRITO!',b.x,b.y-10);
+      var gain=rainbowT>0?2:1;
+      score+=gain;playDingSFX();
+      flashMsg(gain===2?'+2 BURRITOS!':'+1 BURRITO!',b.x,b.y-10);
       burst(b.x+b.w/2,b.y+b.h/2,6,'rgba(0,255,100,');
       b.done=true;
     }
